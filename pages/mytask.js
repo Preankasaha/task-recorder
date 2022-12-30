@@ -3,9 +3,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import MyTask from '../Components/MyTask';
 import { updateCompleteTask } from './api/api';
-
-
-
 import { AuthContext } from './authProvider';
 
 

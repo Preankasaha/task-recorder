@@ -49,7 +49,7 @@ const CompletedTask = ({ completeTask, handleUpdateInComplete, handleCompleteTas
 
           <form>
             <div className="form-control w-full max-w-xs">
-              <label className="label"> <span className="label-text text-black">Comment</span></label>
+              <label className="label"> <span className="label-text text-black pt-14">Comment</span></label>
               <input type="text" placeholder='Enter Comment' {...register("comment")} className="input input-bordered border-4 w-full my-4 max-w-xs" />
               {errors.comment && <p>{errors.comment.message
               }</p>}

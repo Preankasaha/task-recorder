@@ -5,6 +5,7 @@ import { AuthContext } from './authProvider';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/dist/client/router';
 import { updateInCompleteTask } from './api/api';
+
 const completedtask = () => {
 
   const [completeTasks, setCompleteTasks] = useState([]);
