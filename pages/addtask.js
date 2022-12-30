@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from './authProvider';
+import { useRouter } from 'next/dist/client/router';
 import toast from 'react-hot-toast';
+import Head from 'next/head'
 
 const addtask = () => {
 
@@ -9,6 +11,9 @@ const addtask = () => {
   const imageHostKey = process.env.NEXT_PUBLIC_Imagebb_key;
   // console.log(imageHostKey);
   const { user } = useContext(AuthContext)
+
+  const router = useRouter();
+
   const handleAddTask = data => {
     // console.log(data.image[0]);
     // const image = data.image[0];
@@ -47,8 +52,8 @@ const addtask = () => {
         // console.log(data)
         if (data.acknowledged) {
           console.log(data);
-          toast.success('Thanks for adding tasks')
-
+          toast.success(' Your successfully added task')
+          router.push('/mytask')
         }
       })
 
@@ -59,7 +64,7 @@ const addtask = () => {
     <div className='flex justify-center my-8'>
 
       <form onSubmit={handleSubmit(handleAddTask)}>
-        <h2 className='uppercase text-center text-2xl my-8'>Keep Record of Your Task</h2>
+        <h2 className='uppercase text-center text-2xl text-emerald-800 my-8'>Keep Record of Your Task</h2>
         <div className="form-control w-full max-w-xs">
           <label className="label"> <span className="label-text">Task Title</span></label>
           <input type="text" {...register("title", {

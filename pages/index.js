@@ -4,6 +4,7 @@ import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 
 import { initFirebase } from '../firebase/firebase.config'
+import HomeMyTask from '../Components/HomeMyTask'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,7 +21,7 @@ export default function Home() {
       </Head >
       <main>
         <div>
-
+          <HomeMyTask></HomeMyTask>
         </div>
       </main>
 

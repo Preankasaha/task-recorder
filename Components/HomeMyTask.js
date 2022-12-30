@@ -1,31 +1,38 @@
 import React from 'react';
+import { useRouter } from 'next/dist/client/router';
 
 const HomeMyTask = () => {
+  const router = useRouter();
+  const handleTask = () => {
+    router.push('/addtask')
+  }
   return (
-    <div className='bg-emerald-800'>
+    <div className="flex justify-center gap-2 py-14 my-24">
       <>
 
         {/*<!-- Component: Basic card --> */}
-        <div className="overflow-hidden rounded  text-slate-500 shadow-md shadow-emerald-200">
-          <div className="p-6">
-            {/* <figure>
-              <img
-                src="https://plus.unsplash.com/premium_photo-1661963783275-dff88a0296f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80"
-                alt="card image"
-                className="aspect-video w-full"
-              />
-            </figure> */}
-            <h3 className="mb-4 text-xl font-medium text-emerald-800">
+        <div className="overflow-hidden rounded bg-white text-slate-500 ">
+          < div className="p-6" >
 
+            <h3 className="mb-4 text-3xl text-center font-medium text-emerald-800 uppercase">
+              Welcome to Task Recoder
             </h3>
-            <p>
-
+            <p className='text-amber-700 text-xl text-center my-4'>
+              Task Recoder Is A Task Management App.<br></br>
+              You Can Easily Keep Record Of Your Tasks.
             </p>
-          </div>
-        </div>
+            <div className="flex justify-end gap-2 p-6 pt-0 my-4">
+              <button onClick={handleTask} className="inline-flex h-8 flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-500 px-4 text-xs font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+                <span className="order-2">Add Task</span>
+
+              </button>
+
+            </div>
+          </div >
+        </div >
         {/*<!-- End Basic card --> */}
       </>
-    </div>
+    </div >
   );
 };
 

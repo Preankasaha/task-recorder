@@ -26,6 +26,17 @@ const Navbar = () => {
                 aria-haspopup="false"
                 tabIndex="0"
                 className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-cyan-500 focus:bg-cyan-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="/"
+            >
+                <span>Home</span>
+            </Link>
+        </li>
+        <li role="none" className="flex items-stretch">
+            <Link
+                role="menuitem"
+                aria-haspopup="false"
+                tabIndex="0"
+                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-cyan-500 focus:bg-cyan-50 focus:outline-none focus-visible:outline-none lg:px-8"
                 href="/addtask"
             >
                 <span>Add Task</span>
@@ -69,7 +80,7 @@ const Navbar = () => {
             user?.uid ?
                 <>
                     <li role="none" className="flex items-stretch">
-                        <button onClick={handleLogOut} className="inline-flex h-8 flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-500 px-4 text-xs font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none mt-8">
+                        <button onClick={handleLogOut} className="inline-flex h-8 flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-500 px-4 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none mt-8">
                             <span className="order-2">Log Out</span>
 
                         </button>
@@ -82,7 +93,7 @@ const Navbar = () => {
                             role="menuitem"
                             aria-haspopup="false"
                             tabIndex="0"
-                            className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-cyan-500 focus:bg-cyan-50 focus:outline-none focus-visible:outline-none lg:pl-8"
+                            className="btn btn-sm flex items-center gap-2 py-4 transition-colors duration-300 hover:text-cyan-500 focus:bg-cyan-50 focus:outline-none focus-visible:outline-none lg:pl-8"
                             href="/register"
                         >
                             <span>Register</span>
