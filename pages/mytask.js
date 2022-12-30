@@ -2,7 +2,8 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import MyTask from '../Components/MyTask';
-import { updateCompleteTask, userName } from './auth/api';
+import { updateInCompleteTask } from './api/api';
+
 import { AuthContext } from './authProvider';
 
 
@@ -20,7 +21,7 @@ const mytask = () => {
 
   const router = useRouter();
   const handleUpdateComplete = id => {
-    updateCompleteTask(id)
+    updateInCompleteTask(id)
       .then(data => {
         console.log(data);
         if (data.modifiedCount) {

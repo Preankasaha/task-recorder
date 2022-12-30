@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import CompletedTask from '../Components/CompletedTask';
-import { updateInCompleteTask } from './auth/api';
+
 import { AuthContext } from './authProvider';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/dist/client/router';
+import { updateInCompleteTask } from './api/api';
 const completedtask = () => {
 
   const [completeTasks, setCompleteTasks] = useState([]);
