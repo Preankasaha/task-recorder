@@ -1,45 +1,81 @@
-import React from 'react';
+import { useRouter } from 'next/dist/client/router';
+import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import MyTask from '../Components/MyTask';
+import { updateCompleteTask, userName } from './auth/api';
+import { AuthContext } from './authProvider';
 
-const mytask = ({ myTasks }) => {
+
+const mytask = () => {
+  const [myTasks, setMyTasks] = useState([]);
   console.log(myTasks);
+  const { user } = useContext(AuthContext);
+  // console.log(user);
 
-  const handleDelete = seller => {
-
-    fetch(` https://resale-mobile-server.vercel.app/sellers/${seller._id}`, {
-      method: 'DELETE',
-
-    })
+  useEffect(() => {
+    fetch(`http://localhost:5000/tasks/${user?.email}?status=incomplete`)
       .then(res => res.json())
-      .then(data => {
-        if (data.deletedCount > 0) {
-          console.log('deleted');
-          // toast.success(`seller deleted successfully`)
+      .then(data => setMyTasks(data))
+  }, [user?.email])
 
+  const router = useRouter();
+  const handleUpdateComplete = id => {
+    updateCompleteTask(id)
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount) {
+          toast.success('complete task updated')
+          router.push('/completedtask');
         }
       })
   }
-  return (
-    <div className='grid grid-cols-1 grid-cols-2 grid-cols-3'>
-      {
-        myTasks?.map(myTask => <MyTask
-          key={myTask._id}
-          myTask={myTask}
-        ></MyTask>)
-      }
+  const handleTaskDelete = id => {
+    console.log(id);
+    fetch(` http://localhost:5000/deleted/${id}`, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.deletedCount) {
+          toast.success("You have deleteted the reported product successfully")
 
+        }
+      })
+
+  }
+  return (
+
+    <div>
+      <h2 className='text-2xl text-emerald-500 font-bold text-center uppercase mt-8'>Incomplete Task</h2>
+      <h3 className='text-xl text-amber-500 text-center my-4'>Check The Tasks You Need To Complete</h3>
+
+      <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8'>
+        {
+          myTasks?.map(myTask => <MyTask
+            key={myTask._id}
+            myTask={myTask}
+            handleTaskDelete={handleTaskDelete}
+            handleUpdateComplete={handleUpdateComplete}
+          ></MyTask>)
+        }
+
+      </div>
     </div>
   );
 };
 
 export default mytask;
-export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/tasks");
-  const data = await res.json();
-  console.log(data);
-  return {
-    props: {
-      myTasks: data
-    }
-  }
-}
+// export const getStaticProps = async () => {
+
+
+//   // console.log(user?.email);
+//   const res = await fetch(`http://localhost:5000/tasks/preansaha@gmail.com?status=incomplete`);
+//   const data = await res.json();
+//   console.log(data);
+//   return {
+//     props: {
+//       myTasks: data
+//     }
+//   }
+// }
