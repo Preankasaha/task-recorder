@@ -12,7 +12,7 @@ const completedtask = () => {
   // console.log(user);
   const router = useRouter();
   useEffect(() => {
-    fetch(`http://localhost:5000/tasks/${user?.email}?status=completed`)
+    fetch(`https://task-management-server-rho.vercel.app/tasks/${user?.email}?status=completed`)
       .then(res => res.json())
       .then(data => setCompleteTasks(data))
   }, [user?.email])
@@ -49,7 +49,7 @@ const completedtask = () => {
 export default completedtask;
 
 // export const getStaticProps = async () => {
-//   const res = await fetch(`http://localhost:5000/tasks/preansaha@gmail.com?status=completed`);
+//   const res = await fetch(`https://task-management-server-rho.vercel.app/tasks/preansaha@gmail.com?status=completed`);
 //   const data = await res.json();
 //   console.log(data);
 //   return {

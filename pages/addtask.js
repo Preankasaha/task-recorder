@@ -35,7 +35,7 @@ const addtask = () => {
     //   .then(data => console.log(data))
     //   .catch(err => console.log(err))
 
-    fetch('http://localhost:5000/addtasks', {
+    fetch('https://task-management-server-rho.vercel.app/addtasks', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

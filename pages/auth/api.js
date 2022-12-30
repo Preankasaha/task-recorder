@@ -10,7 +10,7 @@
 
 
 export const updateCompleteTask = async (id) => {
-  const url = `http://localhost:5000/updatetask/${id}`;
+  const url = `https://task-management-server-rho.vercel.app/updatetask/${id}`;
   const res = await fetch(url, {
     method: "PUT",
     headers: {
@@ -25,7 +25,7 @@ export const updateCompleteTask = async (id) => {
 
 }
 export const updateInCompleteTask = async (id) => {
-  const url = `http://localhost:5000/updatetask/${id}`;
+  const url = `https://task-management-server-rho.vercel.app/updatetask/${id}`;
   const res = await fetch(url, {
     method: "PUT",
     headers: {

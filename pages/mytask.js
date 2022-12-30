@@ -13,7 +13,7 @@ const mytask = () => {
   // console.log(user);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tasks/${user?.email}?status=incomplete`)
+    fetch(`https://task-management-server-rho.vercel.app/tasks/${user?.email}?status=incomplete`)
       .then(res => res.json())
       .then(data => setMyTasks(data))
   }, [user?.email])
@@ -31,7 +31,7 @@ const mytask = () => {
   }
   const handleTaskDelete = id => {
     console.log(id);
-    fetch(` http://localhost:5000/deleted/${id}`, {
+    fetch(` https://task-management-server-rho.vercel.app/deleted/${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -70,7 +70,7 @@ export default mytask;
 
 
 //   // console.log(user?.email);
-//   const res = await fetch(`http://localhost:5000/tasks/preansaha@gmail.com?status=incomplete`);
+//   const res = await fetch(`https://task-management-server-rho.vercel.app/tasks/preansaha@gmail.com?status=incomplete`);
 //   const data = await res.json();
 //   console.log(data);
 //   return {
